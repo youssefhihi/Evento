@@ -16,6 +16,28 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+                <!-- Role Selection -->
+        <div class="mt-4 flex space-x-8 items-center">
+            <x-input-label for="role" :value="__('Role')" class="text-sm font-semibold text-gray-700 dark:text-gray-300"/>
+
+            <!-- Organizer Role -->
+            <label class="inline-flex space-x-3 items-center">             
+                <span class="ml-2"><i class="fas fa-user-md text-3xl text-blue-500"></i></span>
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Organizer</span>              
+                <input type="radio" class="form-radio text-blue-500" value="organizer" name="role" >
+            </label>
+
+            <!-- Client Role -->
+            <label class="inline-flex space-x-3 items-center">
+                <span class="ml-2 text-3xl text-red-500"><i class="fas fa-user-injured "></i></span>                    
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Event Explorer</span>  
+                <input type="radio" class="form-radio text-red-500" value="client" name="role" checked >
+            </label>
+        </div>
+            <x-input-error :messages="$errors->get('role')" class="text-sm text-red-500 ml-2" />
+
+
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

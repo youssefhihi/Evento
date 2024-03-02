@@ -14,13 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('organizer.dashboard');
+})->middleware(['auth', 'role:organizer'])->name('organizer');
+
+Route::get('/', function () {
+    return view('client.home');
+})->middleware(['auth', 'role:client'])->name('client');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'role:admin'])->name('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
