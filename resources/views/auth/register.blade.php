@@ -22,7 +22,7 @@
 
             <!-- Organizer Role -->
             <label class="inline-flex space-x-3 items-center">             
-                <span class="ml-2"><i class="fas fa-user-md text-3xl text-blue-500"></i></span>
+                <span class="ml-2"><i class="fa fa-user-tie text-3xl text-blue-500"></i></span>
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Organizer</span>              
                 <input type="radio" class="form-radio text-blue-500" value="organizer" name="role" >
             </label>
