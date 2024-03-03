@@ -6,28 +6,12 @@
         }, 100);
     </script>
 @endif
-
- <!-- CONTENT -->
-<div class = "content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
-        <nav class = "flex px-5 py-3 text-gray-700  rounded-lg bg-gray-50 dark:bg-[#1E293B] " aria-label="Breadcrumb">
-            <ol class = "inline-flex items-center space-x-1 md:space-x-3">
-                <li class = "inline-flex items-center">
-                    <a href="#" class = "inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
-                        <svg class = "w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <div class = "flex items-center">
-                        <svg class = "w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
-                        <a href="#" class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Templates</a>
-                    </div>
-                </li>
-            </ol>
-         </nav>
-        <div class = "flex flex-wrap my-5 -mx-2">
-            <div class = "w-full lg:w-1/3 p-2">
-                <div class = "flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-blue-900 via-blue-500 to-blue-300 rounded-md p-3">                   
+    <!-- Main content header -->
+    <div class="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
+        <h1 class="text-2xl font-semibold whitespace-nowrap">Dashboard</h1>
+    </div>
+        <div class="w-full">
+            <div class="flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-blue-900 via-blue-500 to-blue-300 rounded-md p-3">
                 <form action="{{ route('category.index') }}" method="GET" class="flex items-center space-x-2">
                     <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 text-sm focus:outline-none focus:border-blue-500">
                         <option value="categories" {{ $trashed === 'categories' ? 'selected' : '' }}>Category</option>
@@ -36,19 +20,17 @@
                     </select>
                     <button type="submit" class=" bg-white border border-red-600 text-red-600 hover:text-white px-4 p-1  rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">filter</button>
                 </form>
-
-
-                    <div class="mr-3">
-                        <i class="fas fa-plus text-white text-3xl cursor-pointer" onclick="OpenAddCategory()"></i>
-                    </div>
+                <div class="mr-3">
+                    <i class="fas fa-plus text-white text-3xl cursor-pointer" onclick="OpenAddCategory()"></i>
                 </div>
             </div>
-           
-            <div class = "w-full md:w-1/2 lg:w-1/3 p-2">
-                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ">
-                    <table class="min-w-full divide-y divide-gray-200">
+        </div>  
+
+    <div class="flex flex-col mt-6">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div class="overflow-hidden border-b border-gray-200 rounded-md shadow-md">
+                    <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"

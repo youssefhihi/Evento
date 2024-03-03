@@ -28,16 +28,24 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-   
+        
+
         if ($request->user()->role === 'admin') {
             return redirect()->route('admin'); 
         } elseif ($request->user()->role === 'organizer') {
-            return redirect()->route('organizer');
+            if($request->user()->organizer->is_banned === true){                
+                return view('auth.login',['banned' => 'Sorry, your account has been banned. Please contact the administrator for further assistance']);   
+            }else{
+                return redirect()->route('organizer');
+            }
         } elseif ($request->user()->role === 'client') {
+            if($request->user()->client->is_banned === true){
+                return view('auth.login',['banned' => 'Sorry, your account has been banned. Please contact the administrator for further assistance']);
+            }else{
             return redirect()->route('client'); 
+            }
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

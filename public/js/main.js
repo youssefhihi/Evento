@@ -25,6 +25,17 @@ document.getElementById(`EditCategory${id}`).classList.add('hidden');
 
 
 
+function updateCurrentTime() {
+    var now = new Date();
+    
+    var formattedDate = ('0' + now.getDate()).slice(-2) + '/' + ('0' + (now.getMonth() + 1)).slice(-2) + '/' + now.getFullYear();
+    var formattedTime = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + ':' + ('0' + now.getSeconds()).slice(-2);
+    
+    document.getElementById('current-time').textContent = formattedDate + ' ' + formattedTime;
+}
+setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
+
 
 
 const sidebar = document.querySelector("aside");

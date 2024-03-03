@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,10 @@ Route::get('/', function () {
     return view('client.home');
 })->middleware(['auth', 'role:client'])->name('client');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'role:admin'])->name('admin');
+Route::get('/events', function () {
+    return view('admin.event');
+})->middleware(['auth', 'role:admin'])->name('event');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,6 +43,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('/admin/category', CategoryController::class);
     Route::put('/admin/category/ff', [CategoryController::class, 'restore'])->name('category.restore');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::post('/admin/ban-user', [AdminController::class, 'banUser'])->name('admin.banUser');
+    Route::put('/admin/unban-user', [AdminController::class, 'unbanUser'])->name('admin.unbanUser');
+
+
 
 });
 
