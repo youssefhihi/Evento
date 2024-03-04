@@ -14,7 +14,7 @@
     <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
         <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-                <span class="font-semibold text-xl">Total Users</span>
+                <span class="font-semibold ">Total Users</span>
                 <span class="text-xl font-semibold">{{$userCount}}</span>
             </div>
             <div class="p-6 bg-gray-200 rounded-md">
@@ -58,7 +58,7 @@
     <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
         <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-                <span class="font-semibold text-xl">Total Event</span>
+                <span class="font-semibold ">Total Event</span>
                 <span class="text-xl font-semibold">{{$eventCount}}</span>
             </div>
             <div class="p-6 bg-gray-200 rounded-md">
@@ -66,10 +66,10 @@
             </div>
         </div>
     </div>
-    <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+    <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg ">
         <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
-                <span class="font-semibold text-xl">Total Event not improved</span>
+                <span class="font-semibold ">Total Event not improved</span>
                 <span class="text-xl font-semibold">{{$eventCount}}</span>
             </div>
             <div class="p-6 bg-gray-200 rounded-md">
@@ -80,20 +80,20 @@
 </div>
 
 <div class="w-full">
-    <div class="flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-blue-900 via-blue-500 to-blue-300 rounded-md p-3">
+    <div class="flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-red-900 via-red-500 to-red-300 rounded-md p-3">
         <form action="{{ route('admin') }}" method="GET" class="flex items-center space-x-2">
             @csrf
-            <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 text-sm focus:outline-none focus:border-blue-500">
-                <option value="All" {{ $user === 'All' ? 'selected' : '' }}>All</option>
-                <option value="clients" {{ $user === 'clients' ? 'selected' : '' }}>Clients</option>
-                <option value="organizers" {{ $user === 'organizers' ? 'selected' : '' }}>Organizers</option>
+            <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 px-3 p-2 text-sm focus:outline-none focus:border-blue-500">
+                <option value="All" class="px-3 p-2" {{ $user === 'All' ? 'selected' : '' }}>All</option>
+                <option value="clients"class="px-3 p-2" {{ $user === 'clients' ? 'selected' : '' }}>Clients</option>
+                <option value="organizers" class="px-3 p-2"{{ $user === 'organizers' ? 'selected' : '' }}>Organizers</option>
             </select>
-            <button type="submit" class="bg-white border border-red-600 text-red-600 hover:text-white px-4 p-1 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Filter</button>
+            <button type="submit" class=" border-2 border-black text-white  px-4 p-1 rounded-md bg-black focus:outline-none focus:border-red-600">Filter</button>
         </form>
         <div class="mr-3">
             <form action="{{ route('admin') }}" method="GET">
                 <input type="hidden" name="banned" value="1">
-                <button type="submit">Users Banned</button>
+                <button type="submit" class="px-3 py-1 border border-red-600 rounded-md text-white bg-black hover:bg-red-800 ">Users Banned</button>
             </form>
         </div>
     </div>

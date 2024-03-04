@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,9 +47,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin/ban-user', [AdminController::class, 'banUser'])->name('admin.banUser');
     Route::put('/admin/unban-user', [AdminController::class, 'unbanUser'])->name('admin.unbanUser');
-
-
-
 });
-
+Route::middleware(['auth', 'role:organizer'])->group(function () {
+    Route::get('/dashbord/event',[EventController::class,'index'])->name('event.index');
+    Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved');
+    Route::resource('/dashboard/event',EventController::class);
+});
 require __DIR__.'/auth.php';

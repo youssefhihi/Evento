@@ -56,7 +56,7 @@
 </div>
 
 <!-- Settings panel -->
-<div
+<!-- <div
   x-show="isSettingsPanelOpen"
   @click.away="isSettingsPanelOpen = false"
   x-transition:enter="transition transform duration-300"
@@ -83,9 +83,9 @@
     </button>
   </div>
   <div class="flex-1 max-h-full p-4 overflow-hidden hover:overflow-y-scroll">
-    <span>Settings Content</span>
+    <span>Settings Content</span>-->
     <!-- Settings Panel Content ... -->
-  </div>
+  <!-- </div> --> 
 </div>
 </div>
 

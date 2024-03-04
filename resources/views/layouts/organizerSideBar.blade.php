@@ -62,7 +62,7 @@
             <!-- category -->
             <li>
               <a
-                href="{{route('category.index')}}"
+                href="{{route('event.index')}}"
                 class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                 :class="{'justify-center': !isSidebarOpen}"
               >
@@ -82,7 +82,7 @@
                     />
                   </svg>
                 </span>
-                <span :class="{ 'lg:hidden': !isSidebarOpen }">Category</span>
+                <span :class="{ 'lg:hidden': !isSidebarOpen }">Events</span>
               </a>
             </li>
             <!-- event -->
@@ -108,7 +108,7 @@
                     />
                   </svg>
                 </span>
-                <span :class="{ 'lg:hidden': !isSidebarOpen }">Event</span>
+                <span :class="{ 'lg:hidden': !isSidebarOpen }">Reservations</span>
               </a>
             </li>
             <!-- Sidebar Links... -->

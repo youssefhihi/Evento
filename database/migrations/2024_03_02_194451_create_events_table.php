@@ -17,10 +17,13 @@ return new class extends Migration
             $table->text('description');
             $table->string('local');
             $table->date('date');
-            $table->boolean('is_approved');
+            $table->boolean('is_approved')->default(false);
+            $table->integer('placesNumber');
             $table->enum('type_booking',['manual','automatic']);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('organizer_id');
+            $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');
             $table->timestamps();
         });
     }
