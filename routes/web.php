@@ -47,6 +47,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin/ban-user', [AdminController::class, 'banUser'])->name('admin.banUser');
     Route::put('/admin/unban-user', [AdminController::class, 'unbanUser'])->name('admin.unbanUser');
+    Route::get('/dashbord/approve-event',[AdminController::class,'approveEvents'])->name('approveEvent');
+    Route::get('/dashbord/single-event/{event}',[AdminController::class,'eventPage'])->name('eventPage');
+    Route::put('/dashbord/accept-event/{event}',[AdminController::class,'acceptEvent'])->name('acceptEvent');
+
 });
 Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/dashbord/event',[EventController::class,'index'])->name('event.index');

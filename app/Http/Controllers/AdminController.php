@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Organizer; 
 use App\Models\Client; 
 use App\Models\event; 
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -94,4 +95,20 @@ class AdminController extends Controller
             
             return redirect()->back()->with('success', 'User unbanned successfully.');
         }
+
+        public function approveEvents(){
+            $events = event::where('is_approved', false)->get();
+            return view('admin.event',compact('events'));
+        }
+        public function acceptEvent(event $event)
+        { 
+            $event->update(['is_approved' => true]);
+            return redirect()->back()->with('success', 'Event Approved successfully');
+        }
+        public function eventPage(event $event){
+
+            return view('admin.eventPage',compact('event'));
+        }
+        
+    
 }

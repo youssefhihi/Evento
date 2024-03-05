@@ -1,8 +1,8 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-@if(isset($banned))
-<p>{{$banned}}</p>
+@if(session('banned'))
+<p>{{session('banned')}}</p>
 @endif
     <form method="POST" action="{{ route('login') }}">
         @csrf

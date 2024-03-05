@@ -19,10 +19,15 @@ class event extends Model
         'type_booking',
         'placesNumber',
         'organizer_id',
+        'is_approved',
     ];
     
     public function category()
     {
         return $this->belongsTo(Category::class,'category_id');
+    }
+    public function organizer()
+    {
+        return $this->belongsTo(Organizer::class);
     }
 }
