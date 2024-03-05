@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,5 +57,10 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/dashbord/event',[EventController::class,'index'])->name('event.index');
     Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved');
     Route::resource('/dashboard/event',EventController::class);
+});
+
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::put('/home/search',[ClientController::class,'search'])->name('event.search');
 });
 require __DIR__.'/auth.php';
