@@ -28,6 +28,10 @@ class event extends Model
     }
     public function organizer()
     {
-        return $this->belongsTo(Organizer::class);
+        return $this->belongsTo(Organizer::class,'organizer_id');
+    }
+    public function reservation()
+    {
+        return $this->hasMany(reservation::class,'reservation_id');
     }
 }

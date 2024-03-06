@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,7 @@ Route::get('/dashboard', function () {
     return view('organizer.dashboard');
 })->middleware(['auth', 'role:organizer'])->name('organizer');
 
-Route::get('/', function () {
-    return view('client.home');
-})->middleware(['auth', 'role:client'])->name('client');
+
 
 Route::get('/events', function () {
     return view('admin.event');
@@ -54,13 +53,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 });
 Route::middleware(['auth', 'role:organizer'])->group(function () {
-    Route::get('/dashbord/event',[EventController::class,'index'])->name('event.index');
+    Route::get('/dashbord/events',[EventController::class,'index'])->name('event.index');
     Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved');
     Route::resource('/dashboard/event',EventController::class);
 });
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::put('/home/search',[ClientController::class,'search'])->name('event.search');
+
+Route::middleware(['auth', 'role:client'])->group(function () {
+    Route::get('/',[ClientController::class,'index'])->name('client');
+    Route::post('/home/search',[ClientController::class,'search'])->name('event.search');
+    Route::post('/home/filter',[ClientController::class,'filter'])->name('event.filter');
+    Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');
+    Route::post('/reserve/{event}',[ReservationController::class,'store'])->name('reservation.store');
 });
 require __DIR__.'/auth.php';

@@ -19,6 +19,6 @@ class Organizer extends Model
     }
     public function event()
     {
-        return $this->hasMany(event::class);
+        return $this->hasMany(event::class,'organizer_id');
     }
 }
