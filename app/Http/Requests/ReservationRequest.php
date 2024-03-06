@@ -20,11 +20,11 @@ class ReservationRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    { dd('eert');
         return [
             'client_id' => 'required|exists:clients,id',
             'event_id' => 'required|exists:events,id',
-            'number_places' => 'required|integer',
+            'number_places' => 'required|integer|gt:0',
         ];
     }
 }

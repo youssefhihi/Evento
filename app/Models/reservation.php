@@ -18,7 +18,7 @@ class reservation extends Model
 
     public function event()
     {
-        return $this->belongsTo(event::class,'reservation');
+        return $this->belongsTo(event::class,'event_id');
     }
     public function client()
     {

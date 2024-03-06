@@ -56,6 +56,9 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/dashbord/events',[EventController::class,'index'])->name('event.index');
     Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved');
     Route::resource('/dashboard/event',EventController::class);
+    Route::put('/dashboard/reservations/{reservation}',[ReservationController::class,'update'])->name('reservation.update');
+    Route::get('/dashboard/reservations/',[ReservationController::class,'index'])->name('reservation.index');
+    
 });
 
 

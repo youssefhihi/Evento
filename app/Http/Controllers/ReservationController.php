@@ -15,7 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations = Reservation::where('status',false)->get();
+        return view('organizer.reservation',compact('reservations'));
     }
 
     /**
@@ -29,27 +30,39 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ReservationRequest $request,event $event)
+    public function store(ReservationRequest $request, Event $event)
     {
-        
         $data = $request->validated();
-        if($event->type_booking == "manual"){
-            $data['status'] = false;
-            reservation::create($data);
-        }else{
-            $data['status'] = true;
-            reservation::create($data);
-            return redirect()->back()->with('success', '');
+  
+        if ($event->placesNumber == 0 ) {
+            return redirect()->back()->with('noPlace', 'No places available.');
+        } else {
+            $placesRemaining = $event->placesNumber - $data['number_places'];
+            if ($placesRemaining >= 0) {
+                if ($event->type_booking == "manual") {
+                    $data['status'] = false;
+                    Reservation::create($data);
+                    $event->update(['placesNumber' => $placesRemaining]); 
+                    return redirect()->back()->with('success', 'Reservation successfully created organizer should accept your reservation.');
+                } else {
+                    $data['status'] = true;
+                    Reservation::create($data);
+                    $event->update(['placesNumber' => $placesRemaining]);   
+                    return redirect()->back()->with('success', 'Reservation successfully created.');
+                }              
+            } else {            
+                return redirect()->back()->with('noPlace', 'Not enough places available');
+            }
         }
-        
     }
+    
 
     /**
      * Display the specified resource.
      */
     public function show(reservation $reservation)
     {
-        //
+        
     }
 
     /**
@@ -63,9 +76,11 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, reservation $reservation)
+    public function update( reservation $reservation)
     {
-        //
+
+        $reservation->update(['status' => true]);
+        return redirect()->back()->with('with','reservation accepted successfully');
     }
 
     /**

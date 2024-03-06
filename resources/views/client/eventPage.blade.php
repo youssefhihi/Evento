@@ -1,4 +1,12 @@
 <x-client-layout>
+
+@if(session('noPlace'))
+    <p>{{ session('noPlace') }}</p>
+@endif
+
+@if(session('success'))
+    <p>{{ session('success') }}</p>
+@endif
     <section class="p-14 py-36 ">
     <div class="fixed top-1/2 right-28 border border-red-600 p-5 rounded-md">
     <div class="flex flex-col gap-4  max-w-sm ">

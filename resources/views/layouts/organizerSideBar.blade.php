@@ -88,7 +88,7 @@
             <!-- event -->
             <li>
               <a
-                href="#"
+                href="{{route('reservation.index')}}"
                 class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                 :class="{'justify-center': !isSidebarOpen}"
               >
