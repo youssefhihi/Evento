@@ -16,7 +16,7 @@
         <!-- sidebar header -->
         <div class="flex  items-center justify-between flex-shrink-0 p-2" :class="{'lg:justify-center': !isSidebarOpen}">
           <span class="p-2 text-xl font-semibold leading-8 tracking-wider uppercase whitespace-nowrap">
-            K<span :class="{'lg:hidden': !isSidebarOpen}">-Vento</span>
+            E<span :class="{'lg:hidden': !isSidebarOpen}">-Vento</span>
           </span>
           <button @click="toggleSidbarMenu()" class="p-2 rounded-md lg:hidden">
             <svg
@@ -36,7 +36,7 @@
             <!-- dashboard -->
             <li>
               <a
-                href="{{route('admin')}}"
+                href="{{route('organizer')}}"
                 class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                 :class="{'justify-center': !isSidebarOpen}"
               >
@@ -67,20 +67,21 @@
                 :class="{'justify-center': !isSidebarOpen}"
               >
                 <span>
-                  <svg
+                <svg xmlns="http://www.w3.org/2000/svg" 
                     class="w-6 h-6 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
+            
                     fill="none"
-                    viewBox="0 0 24 24"
                     stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
+                    viewBox="0 0 24 24">
+                    <g fill="none" 
+                      stroke="currentColor" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      stroke-width="2">
+                      <path d="M5.8 11.3L2 22l10.7-3.79M4 3h.01M22 8h.01M15 2h.01M22 20h.01M22 2l-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10m8 3l-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17M11 2l.33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7"/>
+                      <path d="M11 13c1.93 1.93 2.83 4.17 2 5c-.83.83-3.07-.07-5-2c-1.93-1.93-2.83-4.17-2-5c.83-.83 3.07.07 5 2"/>
+                    </g>
+                </svg>
                 </span>
                 <span :class="{ 'lg:hidden': !isSidebarOpen }">Events</span>
               </a>
@@ -92,23 +93,22 @@
                 class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                 :class="{'justify-center': !isSidebarOpen}"
               >
-                <span>
-                  <svg
-                    class="w-6 h-6 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
+              <svg class="w-6 h-6 text-gray-400" viewBox="0 0 128 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_177_2)">
+              <path  stroke="currentColor" d="M56 25.5V31.875H32V25.5H56ZM32 44.625V38.25H56V44.625H32ZM32 57.375V51H48V57.375H32ZM24 25.5V31.875H16V25.5H24ZM24 38.25V44.625H16V38.25H24ZM16 57.375V51H24V57.375H16ZM8 6.375V95.625H48V102H0V0H69.6875L104 27.3428V38.25H96V31.875H64V6.375H8ZM72 10.9072V25.5H90.3125L72 10.9072ZM112 51H128V102H56V51H72V44.625H80V51H104V44.625H112V51ZM120 95.625V70.125H64V95.625H120ZM120 63.75V57.375H64V63.75H120Z" fill="black"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_177_2">
+              <rect width="128" height="102" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+
                 </span>
                 <span :class="{ 'lg:hidden': !isSidebarOpen }">Reservations</span>
+                @if ($reservationCount > 0)
+                <span class="bg-red-500 text-white text-xs font-semibold px-1.5 py-0.5 rounded-full"> {{ $reservationCount }} </span>
+                @endif
               </a>
             </li>
             <!-- Sidebar Links... -->

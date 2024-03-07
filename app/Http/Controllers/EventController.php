@@ -44,7 +44,7 @@ class EventController extends Controller
 
         event::create($request->validated());   
 
-        return redirect()->back()->with('success', 'Event created successfully');
+        return redirect('/dashbord/events')->with('success', 'Event created successfully');
     }
 
     /**

@@ -33,8 +33,15 @@
                         <form action="{{ route('reservation.update', $reservation) }}" method="POST">
                               @csrf
                               @method('PUT')
-                              <button type="submit" class="bg-green-400 px-3 py-1 rounded-md text-white hover:bg-white hover:text-green-500 border border-green-600">
+                              <button type="submit" class="bg-green-400 px-3 py-1 rounded-md text-white">
                                   Accept
+                              </button>
+                          </form>
+                          <form action="{{ route('reservation.destroy', $reservation) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="bg-red-400 px-3 py-1 rounded-md text-white">
+                                  Refuse
                               </button>
                           </form>
                         </td>                  

@@ -93,7 +93,9 @@ class ReservationController extends Controller
      */
     public function destroy(reservation $reservation)
     {
-        //
+        $reservation->delete();
+        return redirect()->back()->with('with','reservation refused successfully');
+
     }
    
 }
