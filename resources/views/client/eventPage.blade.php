@@ -75,32 +75,59 @@
 
  
 
-<div id="reserve" class=" hidden min-w-screen h-screen animated fadeIn faster   fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover" >
-    <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
-    <form action="{{ route('reservation.store',$event) }}" method="post">
-    @csrf
-    @method('POST')
-    <input type="hidden" name="event_id" value="{{ $event->id }}">
-    <input type="hidden" name="client_id" value="{{ Auth::user()->client->id }}">
-    <div class=" ">
-        <h1>{{ $event->title }}</h1>
-    </div>
-    <div>
-        <x-input-label for="number_places" :value="__('How Many Tickets')" />
-        <x-text-input id="number_places" class="block mt-1 w-full" type="number" name="number_places" :value="old('number_places')" required autofocus autocomplete="number_places" />
-        <x-input-error :messages="$errors->get('number_places')" class="mt-2" />
-    </div>
-    <div class="p-3   mt-2   md:block">       
-        <button type="submit" class="mb-2 md:mb-0 w-full   bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">
-            Check Out
-        </button>
-    </div>
-</form>
 
-       
-      </div>
-    </div>
-  </div>
+    
+    <div id="reserve" class="hidden min-w-screen h-screen animated fadeIn faster bg-black bg-opacity-70 fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
+    <div class="bg-white shadow-md rounded-3xl p-4 lg:w-3/4 xl:w-1/2 relative mx-auto my-auto rounded-xl shadow-lg">
+    <button class="absolute top-2 right-2 text-gray-600 hover:text-gray-800" onclick="closeReserve()">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    <div class="flex-none lg:flex">
+                        <div class=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
+                            <img src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+                                alt="Just a flower" class=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl">
+                        </div>
+                        <form action="{{ route('reservation.store',$event) }}" method="post" class="flex-auto ml-3 justify-evenly py-2">
+                    
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="event_id" value="{{ $event->id }}">
+                            <input type="hidden" name="client_id" value="{{ Auth::user()->client->id }}">
+                            <div class="flex flex-wrap ">
+                            
+                                <h2 class="flex-auto text-lg font-medium">{{ $event->title }}</h2>
+                            </div>
+                            <p class="mt-3"></p>
+                            <div class="flex py-4  text-sm text-gray-500">
+                                <div class=" items-center w-full">
+                                <x-input-label for="number_places" :value="__('How Many Tickets')" />
+                                <x-text-input id="number_places" placeholder="enter number of ticktes you want" class="block mt-1 w-full" type="number" name="number_places" :value="old('number_places')" required autofocus autocomplete="number_places" />
+                                <x-input-error :messages="$errors->get('number_places')" class="mt-2" />
+                                </div>
+                            </div>
+                            <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
+                            <div class="flex space-x-3 text-sm font-medium">
+                                <div class="flex-auto flex space-x-3">
+                                    <button
+                                        class="mb-2 md:mb-0 bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2 ">
+                                        <span class=" rounded-lg">
+                                                <i class="fas fa-ticket text-red-600 p-1 "></i>
+                                        </span>
+                                        <span>Available Tickets {{ $event->placesNumber }}</span>
+                                    </button>
+                                </div>
+                                <button type="submit"
+                                    class="mb-2 md:mb-0 bg-red-600 px-5 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-red-800"
+                                    type="button" aria-label="like"> Check Out</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
 </x-client-layout>
 
 

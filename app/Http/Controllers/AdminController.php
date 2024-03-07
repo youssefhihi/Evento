@@ -5,13 +5,15 @@ use App\Models\User;
 use App\Models\Organizer; 
 use App\Models\Client; 
 use App\Models\event; 
+use Carbon\Carbon;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
    public function index(Request $request){
-
+    $currentDateTime = Carbon::now();
+    $pastEventsCount = Event::where('date', '<', $currentDateTime)->count();
     $userCount = User::count();
     $organizerCount = Organizer::count();
     $clientCount = Client::count();
@@ -23,6 +25,7 @@ class AdminController extends Controller
     })
     ->count();
     $eventCount = event::count();
+    $eventNotApproveCount = event::Where('is_approved',false)->count();
     $user = $request->input('filter');
     $banned = $request->input('banned');
        
@@ -57,7 +60,7 @@ class AdminController extends Controller
     }else{
         $users = User::all();
     }
-    return view('admin.dashboard', compact('users','user','eventCount','userCount','clientCount','organizerCount','userBannedCount'));
+    return view('admin.dashboard', compact('users','user','pastEventsCount','eventCount','eventNotApproveCount','userCount','clientCount','organizerCount','userBannedCount'));
    }
 
    public function banUser(Request $request)

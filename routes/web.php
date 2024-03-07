@@ -41,7 +41,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
+  
+    Route::delete('/admin/{event}', [EventController::class, 'destroy'])->name('event.destroyA');
     Route::resource('/admin/category', CategoryController::class);
     Route::put('/admin/category/ff', [CategoryController::class, 'restore'])->name('category.restore');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
@@ -54,12 +55,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/dashbord/events',[EventController::class,'index'])->name('event.index');
-    Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved');
-    Route::resource('/dashboard/event',EventController::class);
+    Route::get('/dashbord/event-not-approved',[EventController::class,'eventNotApproved'])->name('eventNotApproved'); 
     Route::put('/dashboard/reservations/{reservation}',[ReservationController::class,'update'])->name('reservation.update');
     Route::get('/dashboard/reservations/',[ReservationController::class,'index'])->name('reservation.index');
-    
+    Route::resource('/event', EventController::class);
 });
+
+
 
 
 

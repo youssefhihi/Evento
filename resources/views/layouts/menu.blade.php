@@ -27,17 +27,9 @@
         <nav class="w-full flex justify-between gap-6 relative">
             <!-- logo -->
             <div class="min-w-max inline-flex relative">
-                <a href="/" class="relative flex items-center gap-3">
-                    <div class="relative w-7 h-7 overflow-hidden flex rounded-xl">
-                        <span class="absolute w-4 h-4 -top-1 -right-1 bg-green-500 rounded-md rotate-45"></span>
-                        <span class="absolute w-4 h-4 -bottom-1 -right-1 bg-[#FCDC58] rounded-md rotate-45"></span>
-                        <span class="absolute w-4 h-4 -bottom-1 -left-1 bg-blue-600 rounded-md rotate-45"></span>
-                        <span
-                            class="absolute w-2 h-2 rounded-full bg-gray-900 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></span>
-                    </div>
-                    <div class="inline-flex text-lg font-semibold text-gray-900">
-                        AgenceX
-                    </div>
+                <a href="/" class="relative flex items-center ">     
+                       <img src="{{asset('imgs/logo.png')}}" alt="logo" class=" h-10">
+
                 </a>
             </div>
 
@@ -49,7 +41,7 @@
                 <ul
                     class="border-t border-gray-100  lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg text-gray-700 w-full lg:justify-center lg:items-center">
                     <li>
-                        <a href="#" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
+                        <a href="/" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
                             Home
                         </a>
                     </li>
@@ -63,11 +55,7 @@
                             About us
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
-                            Features
-                        </a>
-                    </li>
+                    
                 </ul>
 
                 <div

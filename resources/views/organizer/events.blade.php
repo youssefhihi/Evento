@@ -20,6 +20,7 @@
 <div class="flex flex-wrap gap-3">
    @foreach ($events as $event )
    <div class="flex flex-col">
+    
             <div class="bg-white shadow-md  rounded-3xl p-4">
                
                     

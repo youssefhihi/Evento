@@ -16,7 +16,7 @@
         <!-- sidebar header -->
         <div class="flex  items-center justify-between flex-shrink-0 p-2" :class="{'lg:justify-center': !isSidebarOpen}">
           <span class="p-2 text-xl font-semibold leading-8 tracking-wider uppercase whitespace-nowrap">
-            K<span :class="{'lg:hidden': !isSidebarOpen}">-Vento</span>
+            E<span :class="{'lg:hidden': !isSidebarOpen}">-Vento</span>
           </span>
           <button @click="toggleSidbarMenu()" class="p-2 rounded-md lg:hidden">
             <svg
@@ -262,12 +262,8 @@
               <!-- avatar button -->
               <div class="relative" x-data="{ isOpen: false }">
                 <a href="{{route('profile.edit')}}">
-                <button @click="isOpen = !isOpen" class="p-1 bg-gray-200 rounded-full focus:outline-none focus:ring">
-                  <img
-                    class="object-cover w-8 h-8 rounded-full"
-                    src="https://avatars0.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
-                    alt="{{ Auth::user()->name }}"
-                  />
+                <button @click="isOpen = !isOpen" class="p-1 mr-2 focus:outline-none focus:ring">
+                  <p>{{ Auth::user()->name }}</p>
                 </button>
                 </a>
               </div>

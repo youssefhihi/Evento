@@ -160,6 +160,7 @@
     </a>  
     @endforeach  
 </div>
+{{ $events->links()}}
 </section>
 
 

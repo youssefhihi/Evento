@@ -11,14 +11,14 @@
         <h1 class="text-2xl font-semibold whitespace-nowrap">Categories</h1>
     </div>
         <div class="w-full">
-            <div class="flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-blue-900 via-blue-500 to-blue-300 rounded-md p-3">
+            <div class="flex justify-between items-center flex-row w-full bg-black rounded-md p-3">
                 <form action="{{ route('category.index') }}" method="GET" class="flex items-center space-x-2">
-                    <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 text-sm focus:outline-none focus:border-blue-500">
+                    <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 text-sm focus:outline-none p-2">
                         <option value="categories" {{ $trashed === 'categories' ? 'selected' : '' }}>Category</option>
                         <option value="All" {{ $trashed === 'All' ? 'selected' : '' }}>All</option>
                         <option value="archive" {{ $trashed === 'archive' ? 'selected' : '' }}>Deleted</option>
                     </select>
-                    <button type="submit" class=" bg-white border border-red-600 text-red-600 hover:text-white px-4 p-1  rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">filter</button>
+                    <button type="submit" class=" bg-white   px-4 p-1  rounded-md  focus:outline-none text-black ">filter</button>
                 </form>
                 <div class="mr-3">
                     <i class="fas fa-plus text-white text-3xl cursor-pointer" onclick="OpenAddCategory()"></i>

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('organizer_id');
             $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 
@@ -34,5 +35,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('events');
+        $table->dropSoftDeletes(); 
     }
 };

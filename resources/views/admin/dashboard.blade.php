@@ -62,7 +62,7 @@
                 <span class="text-xl font-semibold">{{$eventCount}}</span>
             </div>
             <div class="p-6 bg-gray-200 rounded-md">
-                <i class="fas fa-user-slash text-4xl text-gray-600"></i>
+                <i class="fas fa-calendar-alt text-4xl text-gray-600"></i>
             </div>
         </div>
     </div>
@@ -70,17 +70,28 @@
         <div class="flex items-start justify-between">
             <div class="flex flex-col space-y-2">
                 <span class="font-semibold ">Total Event not improved</span>
-                <span class="text-xl font-semibold">{{$eventCount}}</span>
+                <span class="text-xl font-semibold">{{$eventNotApproveCount}}</span>
             </div>
             <div class="p-6 bg-gray-200 rounded-md">
-                <i class="fas fa-user-slash text-4xl text-gray-600"></i>
+                <i class="fas fa-times-circle text-4xl text-gray-600"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg ">
+        <div class="flex items-start justify-between">
+            <div class="flex flex-col space-y-2">
+                <span class="font-semibold ">Total Event past date</span>
+                <span class="text-xl font-semibold">{{$pastEventsCount}}</span>
+            </div>
+            <div class="p-6 bg-gray-200 rounded-md">
+                <i class="fas fa-hourglass-end text-4xl text-gray-600"></i>
             </div>
         </div>
     </div>
 </div>
 
 <div class="w-full">
-    <div class="flex justify-between items-center flex-row w-full bg-gradient-to-r dark:from-black dark:to-gray-500 from-red-900 via-red-500 to-red-300 rounded-md p-3">
+    <div class="flex justify-between items-center flex-row w-full  bg-black  rounded-md p-2">
         <form action="{{ route('admin') }}" method="GET" class="flex items-center space-x-2">
             @csrf
             <select name="filter" id="filter" class="border border-gray-300 rounded-md pl-2 px-3 p-2 text-sm focus:outline-none focus:border-blue-500">
@@ -88,12 +99,12 @@
                 <option value="clients"class="px-3 p-2" {{ $user === 'clients' ? 'selected' : '' }}>Clients</option>
                 <option value="organizers" class="px-3 p-2"{{ $user === 'organizers' ? 'selected' : '' }}>Organizers</option>
             </select>
-            <button type="submit" class=" border-2 border-black text-white  px-4 p-1 rounded-md bg-black focus:outline-none focus:border-red-600">Filter</button>
+            <button type="submit" class=" border-2 border-black text-black px-4 p-1 rounded-md bg-white focus:outline-none focus:border-red-600">Filter</button>
         </form>
         <div class="mr-3">
             <form action="{{ route('admin') }}" method="GET">
                 <input type="hidden" name="banned" value="1">
-                <button type="submit" class="px-3 py-1 border border-red-600 rounded-md text-white bg-black hover:bg-red-800 ">Users Banned</button>
+                <button type="submit" class="px-3 py-1  rounded-md text-black bg-white">Users Banned</button>
             </form>
         </div>
     </div>

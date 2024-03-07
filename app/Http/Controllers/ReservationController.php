@@ -6,6 +6,7 @@ use App\Models\reservation;
 use App\Models\event;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class ReservationController extends Controller
@@ -13,9 +14,13 @@ class ReservationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(event $event ,reservation $reservation)
     {
-        $reservations = Reservation::where('status',false)->get();
+        $organizerId = Auth::user()->organizer->id;
+        $reservations = reservation::whereHas('event', function ($query) use ($organizerId) {
+            $query->where('organizer_id', $organizerId);
+        })->where('status', false)->get();
+        
         return view('organizer.reservation',compact('reservations'));
     }
 
