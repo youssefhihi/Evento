@@ -1,12 +1,12 @@
-# MediConnect
-MediConnect is a web platform designed to streamline communication and management within the medical field. It serves as a central hub where patients, doctors, and administrators can interact efficiently and securely. Through features such as appointment scheduling, medication management, and consultation tracking, MediConnect aims to enhance patient care, improve workflow efficiency, and ultimately contribute to better health outcomes. With its user-friendly interface and robust functionality, MediConnect is poised to revolutionize the way healthcare services are accessed and delivered.
+# Evento
+
 ## Presentation
 
-- [Presentation Link](https://www.canva.com/design/DAF8-j1CHgI/6MufUqGt_hN9jqZev26H1g/edit)
+- [Presentation Link](http://127.0.0.1/)
 
 ## Jira
 
-- [Jira Link](https://youssefhihi.atlassian.net/jira/software/projects/MED/boards/4)
+- [Jira Link](https://anas-nak.atlassian.net/jira/software/projects/VNT/boards/7?atlOrigin=eyJpIjoiYjNkMjQ4OTE3M2M3NGZjOThkYzM4MzlkZDdiOGM1YzEiLCJwIjoiaiJ9)
 
 ## Tech Stack
 
