@@ -65,6 +65,7 @@
                 <i class="fas fa-calendar-alt text-4xl text-gray-600"></i>
             </div>
         </div>
+        
     </div>
     <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg ">
         <div class="flex items-start justify-between">
