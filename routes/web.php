@@ -61,13 +61,13 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 });
 
 
-
+Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
+Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
 Route::get('/',[ClientController::class,'index'])->name('client');
 
 Route::middleware(['auth', 'role:client'])->group(function () {
     
-    Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
-    Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
+    
     Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');
     Route::post('/reserve/{event}',[ReservationController::class,'store'])->name('reservation.store');
     Route::get('/home/events-tickets',[ClientController::class,'tickets'])->name('tickets');

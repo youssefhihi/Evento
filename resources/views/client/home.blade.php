@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
+        <div class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl block ">
             <div id="default-carousel" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -114,7 +114,7 @@
    @foreach ($events as $event )
    <a href="{{route('eventPage.show', $event)}}" tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-md hover:shadow-2xl ">
                         <div>
-                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class=" rounded-t-xl focus:outline-none w-full h-44" />
+                            <img alt="event" src="{{asset('imgs/event.png')}}" tabindex="0" class=" rounded-t-xl focus:outline-none w-full h-44" />
                         </div>
                         <div class="bg-white rounded-b-xl ">
                             <div class="flex items-center justify-between px-4 pt-4">
@@ -134,7 +134,7 @@
                                 <div class="flex mt-4">
                                     
                                     <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none rounded-md text-xs text-gray-600 px-2 bg-gray-200 py-1"><i class="fas fa-ticket-alt text-red-600 p-1 "></i> Tickects Avialible: <span class=" text-black font-bold">{{$event->placesNumber}}</span></p>
+                                        <p tabindex="0" class="focus:outline-none rounded-md text-xs text-gray-600 px-2 bg-gray-200 py-1"><i class="fas fa-ticket-alt text-red-600 p-1 "></i> Tickects available: <span class=" text-black font-bold">{{$event->placesNumber}}</span></p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-3 py-4">
@@ -147,6 +147,9 @@
                                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                         </svg> 
                                     <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">{{$event->local}}</h2>
+                                    @if ($currentDate >$event->date )
+                                    <p class="bg-red-600 text-white rounded-md text-center px-1">date passed</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -163,25 +166,29 @@
 
 
 @if($eventSearch)
-@foreach ( $eventSearch as $event)
-<div id="eventSearch" class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
-    <div class="bg-white rounded-lg p-8 max-w-md">
-      
-        <div class="mb-6 flex justify-between">
-            <h2 class="text-2xl font-bold mb-2">Event Details</h2>
-            <button onclick="closePopup()" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+
+<div id="eventSearch" class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50 p-10">
+@if(count($eventSearch)> 0)
+<button onclick="closePopup()" class=" absolute top-8 right-1/3 text-white  focus:outline-none bg-black rounded-full p-3 ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
-            </button>
+</button>
+
+<div class="bg-white rounded-lg p-8 max-h-full overflow-y-auto">
+    <div class="mb-6 flex justify-between">
+            
+    <h2 class="text-2xl font-bold mb-2">Events Found</h2>
+           
         </div>
+@foreach ( $eventSearch as $event)
+  
         <div class="mb-6">
             <a href="{{ route('eventPage.show', $event) }}" class="block mb-2">
                 <img src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" alt="Event Image" class="w-full rounded-lg">
             </a>
-            <div class="flex justify-between items-center mb-2">
-                                <div ></div>
-
+            <div class="flex justify-between items-center mb-2">           
+                                <div>  </div>
                 <div class="bg-red-200 py-1.5 px-6 rounded-full">
                     <p class="text-xs text-red-700">{{ $event->category->name }}</p>
                 </div>
@@ -196,12 +203,33 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <p class="text-sm text-gray-600">{{ $event->local }}</p>
+              
+                @if ($currentDate >$event->date )
+                <p class="bg-red-600 text-white rounded-md text-center px-1">date passed</p>
+                @endif
             </div>
         </div>
+        
+        <div class ="border-b-2 border-black w-full mb-7"></div>
       
-    </div>
-</div>
+   
 @endforeach
+ </div>
+
+ @else
+ <button onclick="closePopup()" class=" absolute top-1/3 right-1/3 text-white  focus:outline-none bg-black rounded-full p-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+</button>
+
+<div class="bg-white rounded-lg p-8 max-h-full overflow-y-auto mb-8">
+    <div class=" flex justify-between">
+            
+    <h2 class="text-2xl font-bold mb-2">No event found with this title</h2>
+           
+        </div>
+@endif
 @endif
 
 

@@ -99,6 +99,9 @@ class ReservationController extends Controller
      */
     public function destroy(reservation $reservation)
     {
+       $number= $reservation->event->placesNumber - 1;
+        
+       $reservation->event->update(['placesNumber'=> $number]);
         $reservation->delete();
         return redirect()->back()->with('with','reservation refused successfully');
 

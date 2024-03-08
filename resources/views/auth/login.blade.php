@@ -1,8 +1,10 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4" :status="session('status')" class="bg-green-600 rounded-md text-center text-white py-2 max-w-2xl" />
 @if(session('banned'))
-<p>{{session('banned')}}</p>
+<div class="bg-red-600 rounded-md text-center text-white py-2 max-w-2xl">
+<p >{{session('banned')}}</p>
+</div>
 @endif
 <div class="font-[sans-serif] text-[#333]">
       <div class="min-h-screen flex flex-col items-center justify-center">
