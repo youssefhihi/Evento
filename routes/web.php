@@ -62,10 +62,10 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 
 
 
-
+Route::get('/',[ClientController::class,'index'])->name('client');
 
 Route::middleware(['auth', 'role:client'])->group(function () {
-    Route::get('/',[ClientController::class,'index'])->name('client');
+    
     Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
     Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
     Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');

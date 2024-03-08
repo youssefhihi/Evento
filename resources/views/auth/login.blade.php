@@ -4,6 +4,15 @@
 @if(session('banned'))
 <p>{{session('banned')}}</p>
 @endif
+<div class="font-[sans-serif] text-[#333]">
+      <div class="min-h-screen flex flex-col items-center justify-center">
+        <div class="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+          <div class="md:max-w-md w-full sm:px-6 py-4">
+            <div class="flex justify-center mb-6">
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -46,4 +55,11 @@
             </x-primary-button>
         </div>
     </form>
+    </div>
+          <div class="md:h-full max-md:mt-10 bg-[#000842] rounded-xl lg:p-12 p-8">
+            <img src="https://readymadeui.com/signin-image.webp" class="w-full h-full object-contain" alt="login-image" />
+          </div>
+        </div>
+      </div>
+    </div>
 </x-guest-layout>
