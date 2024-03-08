@@ -1,12 +1,6 @@
 <x-client-layout>
 
-@if(session('noPlace'))
-    <p>{{ session('noPlace') }}</p>
-@endif
 
-@if(session('success'))
-    <p>{{ session('success') }}</p>
-@endif
     <section class="p-14 py-36 ">
     <div class="fixed top-1/2 right-28 border border-red-600 p-5 rounded-md">
     <div class="flex flex-col gap-4  max-w-sm ">
@@ -19,7 +13,13 @@
 </div>
 
         <div class="flex flex-col max-w-4xl mx-auto bg-gray-100 p-8 rounded-xl">
-            
+        @if(session('noPlace'))
+            <p class="w-full bg-red-400  text-center py-2 rounded-md text-white mb-2 ">{{ session('noPlace') }}</p>
+        @endif
+
+        @if(session('success'))
+            <p  class="w-full bg-green-400  text-center py-2 rounded-md text-white mb-2 ">{{ session('success') }}</p>
+        @endif
               <p class="pl-10 text-gray-500 ">Published on: <span class="text-black font-semibold">{{ $event->created_at }}</span></p>
                 <h1 class="text-4xl mt-5 font-bold text-gray-900 text-center">{{ $event->title }}</h1>
                 <div class="flex flex-col mt-6">

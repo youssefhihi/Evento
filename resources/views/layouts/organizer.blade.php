@@ -14,7 +14,8 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
     </head>
     <body >
     <div class="flex  overflow-y-hidden bg-white" x-data="setup()" x-init="$refs.loading.classList.add('hidden')">

@@ -66,8 +66,8 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 
 Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/',[ClientController::class,'index'])->name('client');
-    Route::post('/home/search',[ClientController::class,'search'])->name('event.search');
-    Route::post('/home/filter',[ClientController::class,'filter'])->name('event.filter');
+    Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
+    Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
     Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');
     Route::post('/reserve/{event}',[ReservationController::class,'store'])->name('reservation.store');
 });

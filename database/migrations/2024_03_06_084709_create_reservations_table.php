@@ -16,11 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->boolean('status');
-            $table->integer('number_places');
             $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-           
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');        
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 
@@ -30,5 +29,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('reservations');
+        $table->dropSoftDeletes(); 
     }
 };

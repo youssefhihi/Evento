@@ -71,7 +71,7 @@ class EventController extends Controller
     {
         
         $event->update($request->validated());
-        return redirect()->back()->with('success', 'Event Updated successfully');
+        return redirect('/dashboard/event')->with('success', 'Event Updated successfully');
     }
 
     /**

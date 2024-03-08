@@ -12,7 +12,7 @@ class reservation extends Model
         'status',
         'event_id',
         'client_id',
-        'number_places',
+        
 
     ];
 

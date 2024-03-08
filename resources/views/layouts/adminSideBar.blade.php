@@ -105,6 +105,9 @@
                 </svg>
                 </span>
                 <span :class="{ 'lg:hidden': !isSidebarOpen }">Event</span>
+                @if ($eventCount > 0)
+                <span class="bg-red-500 text-white text-xs font-semibold px-1.5 py-0.5 rounded-full"> {{ $eventCount }} </span>
+                @endif
               </a>
             </li>
             <!-- Sidebar Links... -->

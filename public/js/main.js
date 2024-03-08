@@ -21,7 +21,10 @@ document.getElementById(`EditCategory${id}`).classList.remove('hidden');
 function CloseEditCategory(id) {
 document.getElementById(`EditCategory${id}`).classList.add('hidden');
 }
-
+function closePopup() {
+    document.getElementById(`eventSearch`).classList.add('hidden');
+    }
+    
 
 
 

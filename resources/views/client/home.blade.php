@@ -22,7 +22,7 @@
             </p>
             <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
                 <div class="flex sm:flex-row flex-col gap-5 w-full">
-                    <form action="{{route('event.search')}}"method="post"
+                    <form action="{{route('event.search')}}" method="get"
                         class="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-gray-600 shadow-lg shadow-gray-200/20
                             border border-gray-200 bg-gray-100 rounded-full ease-linear focus-within:bg-white  focus-within:border-red-600">
                         @csrf
@@ -90,10 +90,14 @@
 </section>
 <section>
     <div>
+         <h1 class="text-3xl leading-tight sm:text-xl md:text-2xl xl:text-3xl mb-3 pl-5
+            font-bold text-gray-900"> Discover Categories <i class="fas fa-fire text-yellow-600"></i></h1>
+         <div class ="border-b-2 border-black w-full mb-7"></div>
         <div class="flex flex-wrap gap-3 justify-center">
             @foreach ($categories as $category)
-                <form method="post" action="{{ route('event.filter', $category) }}" class="">
+                <form method="get" action="{{ route('event.filter') }}" class="">
                     @csrf
+                    <input type="hidden" name="filter" value="{{ $category->id }}">
                     <button type="submit" class="text-white before:ease rounded-md relative h-12 w-40 overflow-hidden border border-red-600 bg-red-600 shadow-2xl before:absolute before:left-0 before:-ml-2 before:h-48 before:w-48 before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:bg-white before:transition-all before:duration-500 hover:text-red-600 hover:shadow-black hover:before:-rotate-180">
                          <span class="relative z-10">{{ $category->name }}</span>
                     </button>
@@ -101,67 +105,104 @@
                 </form>            
             @endforeach
         </div>
-        <div class="flex  justify-center space-x-3 mt-3 ">
-        {{ $categories->links()}}
-        </div>   
+        
     </div>
 </section>
-<section class=" p-10">
-<div class="flex flex-wrap gap-3 justify-center">
+<section class=" p-10 flex flex-col gap-3">
+<div class="flex flex-wrap items-center gap-10 justify-center">
+    
    @foreach ($events as $event )
-   <a href="{{route('eventPage.show', $event)}}" class="flex flex-col ">
-            <div class="bg-white shadow-md  rounded-3xl p-5">  
-                    <div class="flex-auto ml-3 justify-evenly py-2">
-                    <h2 class="flex-auto text-lg font-medium">{{$event->title}}</h1>
-                        <p class="mt-3"></p>
-                        <div class="flex py-4 gap-4 text-sm text-gray-500">
-                            <div class="flex-1 inline-flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-400" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                    </path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                                <p class="">{{$event->local}}</p>
+   <a href="{{route('eventPage.show', $event)}}" tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-md hover:shadow-2xl ">
+                        <div>
+                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class=" rounded-t-xl focus:outline-none w-full h-44" />
+                        </div>
+                        <div class="bg-white rounded-b-xl ">
+                            <div class="flex items-center justify-between px-4 pt-4">
+                                <div>
+                                   
+                                </div>
+                                <div class="bg-red-200 py-1.5 px-6 rounded-full">
+                                    <p tabindex="0" class="focus:outline-none text-xs text-red-700">{{$event->category->name}}</p>
+                                </div>
                             </div>
-                            <div class="flex-1 inline-flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <p class="">{{$event->date}}</p>
+                            <div class="p-4">
+                                <div class="flex items-center">
+                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">{{$event->title}}</h2>
+                                   
+                                </div>
+                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{substr($event->description, 0, 30)}} </p>
+                                <div class="flex mt-4">
+                                    
+                                    <div class="pl-2">
+                                        <p tabindex="0" class="focus:outline-none rounded-md text-xs text-gray-600 px-2 bg-gray-200 py-1"><i class="fas fa-ticket-alt text-red-600 p-1 "></i> Tickects Avialible: <span class=" text-black font-bold">{{$event->placesNumber}}</span></p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3 py-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg> 
+                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">{{$event->local}}</h2>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
-                        <div class="flex space-x-3 text-sm font-medium">
-                            <div class="flex-auto flex space-x-3">
-                                <button
-                                    class="mb-2 md:mb-0 bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2 ">
-                                    <span class="text-green-400 hover:text-green-500 rounded-lg">
-                                    <i class="fas fa-chair"></i>
-                                    </span>
-                                    <span>{{$event->placesNumber}} places</span>
-                                </button>
-                            </div>
-                            <button
-                            class="mb-2 md:mb-0 bg-gray-600 px-4 py-2 shadow-sm tracking-wider border text-white rounded-full hover:bg-gray-900 inline-flex items-center space-x-2 ">
-                            <span class="text-green-400 hover:text-green-500 rounded-lg">
-                            <i class="fas fa-ticket-alt"></i>
-                            </span>
-                            <span>{{$event->placesNumber}} tickets sold </span></button>
-                        </div>
-                   
+                    </a>
+    
+    @endforeach  
+
+
+</div>
+
+    {{ $events->links() }}
+
+</section>
+
+
+@if($eventSearch)
+@foreach ( $eventSearch as $event)
+<div id="eventSearch" class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white rounded-lg p-8 max-w-md">
+      
+        <div class="mb-6 flex justify-between">
+            <h2 class="text-2xl font-bold mb-2">Event Details</h2>
+            <button onclick="closePopup()" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="mb-6">
+            <a href="{{ route('eventPage.show', $event) }}" class="block mb-2">
+                <img src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" alt="Event Image" class="w-full rounded-lg">
+            </a>
+            <div class="flex justify-between items-center mb-2">
+                                <div ></div>
+
+                <div class="bg-red-200 py-1.5 px-6 rounded-full">
+                    <p class="text-xs text-red-700">{{ $event->category->name }}</p>
                 </div>
             </div>
+            <h2 class="text-xl font-semibold mb-2">{{ $event->title }}</h2>
+            <p class="text-sm text-gray-600 mb-4">{{ substr($event->description, 0, 100) }}</p>
+            <div class="flex items-center">
+                <i class="fas fa-ticket-alt text-red-600 p-1"></i>
+                <p class="text-sm text-gray-600 mr-4">Tickets Available: <span class="font-bold">{{ $event->placesNumber }}</span></p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <p class="text-sm text-gray-600">{{ $event->local }}</p>
+            </div>
         </div>
-    </a>  
-    @endforeach  
+      
+    </div>
 </div>
-{{ $events->links()}}
-</section>
+@endforeach
+@endif
 
 
 </x-client-layout>
