@@ -29,12 +29,12 @@
                             Services
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
-                            About us
-                        </a>
-                    </li>
                     
+                    <li>
+                        <a href="{{route('tickets')}}" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
+                            Your Tickets
+                        </a>
+                    </li>     
                 </ul>
 
                 @if (Route::has('login'))

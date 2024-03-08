@@ -1,4 +1,11 @@
 <x-organizer-layout>
+@if(session('success'))
+    <script>
+        setTimeout(function() {
+            alert('{{ session('success') }}');
+        }, 100);
+    </script>
+@endif
 <nav class = "flex justify-between px-5 py-3 text-gray-700  rounded-lg bg-gray-50 dark:bg-[#1E293B] " aria-label="Breadcrumb">
             <ol class = "inline-flex items-center space-x-1 md:space-x-3">
                 <li class = "inline-flex items-center">

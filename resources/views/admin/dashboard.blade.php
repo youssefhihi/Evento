@@ -4,7 +4,13 @@
 
        
 
-
+@if(session('success'))
+    <script>
+        setTimeout(function() {
+            alert('{{ session('success') }}');
+        }, 100);
+    </script>
+@endif
 <!-- Main content header -->
 <div class="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
     <h1 class="text-2xl font-semibold whitespace-nowrap">Dashboard</h1>
@@ -65,7 +71,7 @@
                 <i class="fas fa-calendar-alt text-4xl text-gray-600"></i>
             </div>
         </div>
-        
+
     </div>
     <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg ">
         <div class="flex items-start justify-between">

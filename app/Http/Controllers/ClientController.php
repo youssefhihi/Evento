@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\event;
 use App\Models\Category;
+use App\Models\reservation;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Http\Requests\CategoryRequest;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class ClientController extends Controller
@@ -37,8 +38,9 @@ class ClientController extends Controller
         return view("client.eventPage",compact('event'));
     }
     public function tickets(){
-
-        $tickets = reservation::where('client');
+        $id = Auth::user()->client->id;
+        $tickets = reservation::where('client_id',$id)->where('status',true)->get();
+        return view('client.tickets',compact('tickets'));
     }
 
 }

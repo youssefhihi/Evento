@@ -1,4 +1,11 @@
 <x-organizer-layout>  
+@if(session('success'))
+    <script>
+        setTimeout(function() {
+            alert('{{ session('success') }}');
+        }, 100);
+    </script>
+@endif
     <form method="POST" action="{{ route('event.store') }}">
         @csrf
         @method('POST')

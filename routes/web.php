@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboar', function () {
-    return view('dashboard');
+    return view('client.tickets');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -70,5 +70,6 @@ Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
     Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');
     Route::post('/reserve/{event}',[ReservationController::class,'store'])->name('reservation.store');
+    Route::get('/home/events-tickets',[ClientController::class,'tickets'])->name('tickets');
 });
 require __DIR__.'/auth.php';
