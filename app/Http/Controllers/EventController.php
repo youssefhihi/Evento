@@ -18,7 +18,10 @@ class EventController extends Controller
         $id = Auth::user()->organizer->id;
        
        $events = event::where('organizer_id', $id)->where('is_approved', true)->get();
+       
        return view('organizer.events',compact('events'));
+
+       
     }
     public function eventNotApproved(){
         $id = Auth::user()->organizer->id;

@@ -26,18 +26,26 @@ function closePopup() {
     }
     
 
+    const setup = () => {
+        return {
+          loading: true,
+          isSidebarOpen: false,
+          toggleSidbarMenu() {
+            this.isSidebarOpen = !this.isSidebarOpen
+          },
+          isSettingsPanelOpen: false,
+          isSearchBoxOpen: false,
+        }
+      }
 
 
-function updateCurrentTime() {
-    var now = new Date();
     
-    var formattedDate = ('0' + now.getDate()).slice(-2) + '/' + ('0' + (now.getMonth() + 1)).slice(-2) + '/' + now.getFullYear();
-    var formattedTime = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + ':' + ('0' + now.getSeconds()).slice(-2);
-    
-    document.getElementById('current-time').textContent = formattedDate + ' ' + formattedTime;
-}
-setInterval(updateCurrentTime, 1000);
-updateCurrentTime();
-
-
-
+      
+      
+      function openToReserve() {
+      document.getElementById('reserve').classList.remove('hidden');
+      }
+      
+      function closeReserve(){
+      document.getElementById('reserve').classList.add('hidden');
+      }

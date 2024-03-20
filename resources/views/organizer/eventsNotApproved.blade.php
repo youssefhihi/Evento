@@ -29,13 +29,14 @@
      
    @foreach ($events as $event ) <!-- <a href="{{route('event.edit', $event->id)}}">update</a> -->
   
-   <a href="{{route('eventPage', $event)}}" tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-md hover:shadow-2xl ">
-                        <div>
+   <div  tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8 shadow-md hover:shadow-2xl ">
+                        <a href="{{route('eventPage', $event)}}">
                             <img alt="event" src="{{asset('imgs/event.png')}}" tabindex="0" class=" rounded-t-xl focus:outline-none w-full h-44" />
-                        </div>
+                        </a>
                         <div class="bg-white rounded-b-xl ">
                             <div class="flex items-center justify-between px-4 pt-4">
-                            <div>
+                           
+                      <div>
                       <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                             <span class="sr-only">Open dropdown</span>
                             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
@@ -59,6 +60,7 @@
                             </ul>
                       </div>
                       </div>
+                        
                                 <div class="bg-red-200 py-1.5 px-6 rounded-full">
                                     <p tabindex="0" class="focus:outline-none text-xs text-red-700">{{$event->category->name}}</p>
                                 </div>
@@ -88,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
     @endforeach  
 </div>
   

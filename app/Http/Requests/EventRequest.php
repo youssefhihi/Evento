@@ -27,7 +27,7 @@ class EventRequest extends FormRequest
             'description' => 'required',
             'local' => 'required|max:255',
             'placesNumber' => 'required|integer',
-            'date'=>'required',
+            'date' => 'required|date|after:today',
             'type_booking' => 'required|in:automatic,manual',
             'category_id' => 'required|exists:categories,id',
             'organizer_id' => 'required|exists:organizers,id',

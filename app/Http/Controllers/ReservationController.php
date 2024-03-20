@@ -49,16 +49,16 @@ class ReservationController extends Controller
                     {
                     $data['status'] = false;
                     Reservation::create($data);
-                    $event->update(['placesNumber' => $placesRemaining]);
-                    }
+                }
+                $event->update(['placesNumber' => $placesRemaining]);
                     return redirect()->back()->with('success', 'Reservation successfully created organizer should accept your reservation.');
                 } else {
                     for($i = 0 ; $i<  $data['number_places'] ;$i++)
                     {
                     $data['status'] = true;
                     Reservation::create($data);
-                    $event->update(['placesNumber' => $placesRemaining]);
-                    }   
+                }   
+                $event->update(['placesNumber' => $placesRemaining]);
                     return redirect()->back()->with('success', 'Reservation successfully created.');
                 }              
             } else {            

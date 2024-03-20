@@ -54,17 +54,6 @@
 </body>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-    <script>
-      const setup = () => {
-        return {
-          loading: true,
-          isSidebarOpen: false,
-          toggleSidbarMenu() {
-            this.isSidebarOpen = !this.isSidebarOpen
-          },
-          isSettingsPanelOpen: false,
-          isSearchBoxOpen: false,
-        }
-      }
-    </script>
+  
+
 </html>

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboar', function () {
-    return view('client.tickets');
+    return view('client.home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -61,12 +61,12 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 });
 
 
-Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
-Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
-Route::get('/',[ClientController::class,'index'])->name('client');
 
 Route::middleware(['auth', 'role:client'])->group(function () {
     
+    Route::get('/home/search',[ClientController::class,'index'])->name('event.search');
+    Route::get('/home/filter',[ClientController::class,'index'])->name('event.filter');
+    Route::get('/',[ClientController::class,'index'])->name('client');
     
     Route::get('/event-page/{event}',[ClientController::class,'eventPage'])->name('eventPage.show');
     Route::post('/reserve/{event}',[ReservationController::class,'store'])->name('reservation.store');

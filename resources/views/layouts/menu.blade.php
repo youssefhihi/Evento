@@ -25,14 +25,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
-                            Services
+                        <a href="/profile" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
+                           Profile
                         </a>
                     </li>
                     
                     <li>
                         <a href="{{route('tickets')}}" class="duration-300 font-medium ease-linear hover:text-blue-600 py-3">
-                            Your Tickets
+                             Tickets
                         </a>
                     </li>     
                 </ul>

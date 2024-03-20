@@ -190,7 +190,7 @@
             <div class="flex justify-between items-center mb-2">           
                                 <div>  </div>
                 <div class="bg-red-200 py-1.5 px-6 rounded-full">
-                    <p class="text-xs text-red-700">{{ $event->category->name }}</p>
+                    <p class="text-xs text-red-700">{{ $event->category->first()->name }}</p>
                 </div>
             </div>
             <h2 class="text-xl font-semibold mb-2">{{ $event->title }}</h2>

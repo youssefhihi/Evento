@@ -36,6 +36,7 @@ class AuthenticatedSessionController extends Controller
             if($request->user()->organizer->is_banned){    
                 Auth::logout();            
                 return redirect()->back()->with('banned', 'Your account has been banned. Please contact the administrator for further assistance.');
+        
             }else{
                 return redirect()->route('organizer');
             }
@@ -50,6 +51,8 @@ class AuthenticatedSessionController extends Controller
         }
 
     }
+
+   
 
     /**
      * Destroy an authenticated session.
